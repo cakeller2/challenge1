@@ -16,4 +16,24 @@ public class Item {
         this.email = email;
         this.price = price;
     }
+
+    public String getItemName() {
+        return this.itemName;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
 }
