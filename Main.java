@@ -44,6 +44,7 @@ public class Main {
     public void sell(){
         System.out.println("Please select which menu you would like to view \n1. Items listed for sale\n2. Add new item to Sell\n3. Go back to Home");
         int selection = scan.nextInt();
+        scan.nextLine();
         switch (selection) {
             case 1:
                 viewSellList();
@@ -67,19 +68,14 @@ public class Main {
             System.out.println("You currently do not have any items for sale. Please go to add new item to sell to your page");
             sell();
         } else {
+            for (int i = 0; i < sellList.size(); i++) {
+                System.out.println((i + 1) + ". Name: " + sellList.get(i).getItemName() + ", Category: " + sellList.get(i).getCategory() + ", Listed Price: $" + String.format("%.2f", sellList.get(i).getPrice() ));
+            }
 
+            System.out.println("Returning you to previous menu");
+            sell();
         }
     }
-
-
-    /*When the sell option is chosen, the user is presented with two more menu options to either see their
-current items up for sale or add a new item for sale.
-If the user selects to see their current items up for sale, all of their current item names should be listed
-alongside the category and price in a nicely presented manner.
-If the user selects add new item, they should be prompted to enter in a name for the item, a category
-for the item, and a price for the item. The item should then be added to the system and show up when
-the user goes to the previously mentioned option for seeing their current items up for sale.
-An option to go back to the main menu must be available to the user as well*/
 
     public void addSell() {
         System.out.println("Would you like to list an item to sell? Please type yes or no");
@@ -92,7 +88,14 @@ An option to go back to the main menu must be available to the user as well*/
             String category = scan.nextLine();
 
             System.out.println("Please enter listing price for " + itemName);
-            double price = scan.nextDouble();
+            double price = 0;
+            if (!scan.hasNextDouble()){ //so the program doesn't crash if a double isn't inputted
+                scan.nextLine();
+                System.out.println("Invalid Input, entry must be restarted");
+                addSell();
+            } else {
+                price = scan.nextDouble();
+            }
 
             sellList.add(new Item(itemName, category, null, null, price));
 
