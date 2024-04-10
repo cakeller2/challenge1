@@ -1,4 +1,9 @@
-# challenge1
+## challenge1
+
+# Authors
+ Camryn Keller
+ Joseph Noga
+ Akshaj Illa
 
 This code is a proof of concept of a possible item selling service. 
 
@@ -30,10 +35,14 @@ In this menu, the user is prompted to pick between viewing the items that they h
 
 If the user has no items listed for sale, then the system will inform the user and return to the previous menu. If the list of items is not empty, the list will be displayed and then the user will be moved back to the previous menu.
 
-If adding an item to be sold is selected, there is a check for whether the user entered this menu by accident. The system then waits for a valid input. After that, the user has to enter the information for the item they are listing. This includes 
+If adding an item to be sold is selected, there is a check for whether the user entered this menu by accident. The system then waits for a valid input. After that, the user has to enter the information for the item they are listing. This includes item name, item category, item price, user's name, and user's email. When the item is added, a success message will be displayed.
 
+# View Cart
 
+In this menu, the user is shown the items in their cart. If the cart is empty, it informs the user and then asks them if they want to head to checkout or to go back to the home menu. If the user tries to head to checkout with an empty cart, they will be brought back to cart display to remind them that their cart is empty
 
+If the cart is not empty when the user selects checkout, then the user is prompted to confirm purchase. After the purchase, the user will be brought back to the home menu. If the user does not confirm purchase, they will be brought back to cart display.
 
-A team’s repo must include a Read Me file in their root project folder that summarizes their application
-prototype and how to run it. 
+# Logout
+
+In the home menu, the user has the choice of logging out. If the user decided to do this, there will be a nice message and the application will exit.
