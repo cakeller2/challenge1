@@ -7,7 +7,7 @@ public class Main {
     ArrayList<Item> sellList = new ArrayList<Item>(); //for Sell methods
     ArrayList<Item> cart = new ArrayList<Item>();// for viewCart method
 
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in); //scanner for input reading
 
     public void home() {
         //for debugging only
@@ -96,6 +96,9 @@ public class Main {
             System.out.println("Invalid input, try again");
             addItemToCart();
         }
+
+        System.out.println("Now sending you to the previous menu");
+        buy();
 
     }
 
@@ -250,7 +253,7 @@ public class Main {
         System.out.println("Please enter Your QU Password below");
         passWord = scan.nextLine(); //password variable for password
 
-        while (mistake < 3) {
+        while (mistake < 3) { //mistake loop
             int userNameIndex = credUserName.indexOf(userName);
             if (userNameIndex != -1 && credPassWord.get(userNameIndex).equals(passWord)) {
                 System.out.println("Welcome user " + userName + "!");
