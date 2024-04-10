@@ -38,7 +38,8 @@ public class Main {
     }
 
     public void buy(){
-
+        // shopList.add(new Item("Potion", "test2", "test3", "yeah@yeah.com", 9.99));
+        // shopList.add(new Item("Super Potion", "test2", "test3", "yeah@yeah.com", 14.99));
         System.out.println("Please select which menu you would like to view \n1. Items listed for sale\n2. Add item to Cart\n3. Go back to Home");
         int selection = scan.nextInt();
         scan.nextLine();
@@ -69,7 +70,7 @@ public class Main {
             }
 
             System.out.println("Returning you to previous menu");
-            sell();
+            buy();
         }
     }
 
@@ -79,13 +80,13 @@ public class Main {
         String answer = scan.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
             System.out.println("Which item would you like to buy?");
-            buyIndex = scan.nextInt();
+            buyIndex = scan.nextInt(); //BUYINDEX IS THE INDEX OF THE ITEM YOU WANT TO ADD TO CART
             if(buyIndex >= shopList.size() || buyIndex < 0){
                 System.out.println("Which item would you like to buy?");
                 buyIndex = scan.nextInt();
             }
             else if(-1 < buyIndex && buyIndex < shopList.size()){
-                cart.add(shopList.remove(buyIndex));
+                cart.add(shopList.remove(buyIndex)); //REMOVES THE ITEM FROM SHOPLIST AND ADDS IT TO CART
             }
             
         } 
