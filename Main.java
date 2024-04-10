@@ -1,12 +1,12 @@
 package challenge1;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     ArrayList<Item> shopList = new ArrayList<Item>(); //for Buy and Sell methods
     ArrayList<Item> cart = new ArrayList<Item>();// for viewCart method
-
-    
 
     Scanner scan = new Scanner(System.in);
 
@@ -85,7 +85,76 @@ public class Main {
 
     
     public static void main(String[] args) {
-        new Main().home();
+        //proof of concept
+        ArrayList<String> credUserName = new ArrayList<String>();
+        credUserName.add("student1");
+        credUserName.add("student2");
+        credUserName.add("student3");
+
+        ArrayList<String> credPassWord = new ArrayList<String>();
+        credPassWord.add("testing1");
+        credPassWord.add("testing2");
+        credPassWord.add("testing3");
+
+        //String[] credUserName = {"student1", "student2", "student3"};
+        //String[] credPassWord = {"testing1", "testing2", "testing3"};
+        //List<String> credPassWord = Arrays.asList("testing1", "testing2", "testing3");
+
+        Scanner scan = new Scanner(System.in); //same name as other scanner, just so it can be accessed here
+        System.out.println("\r\n" + //
+                        " _    _        _                                 _                  ______                \r\n" + //
+                        "| |  | |      | |                               | |                 | ___ \\               \r\n" + //
+                        "| |  | |  ___ | |  ___   ___   _ __ ___    ___  | |_   ___     __ _ | |_/ /  __ _  _   _  \r\n" + //
+                        "| |/\\| | / _ \\| | / __| / _ \\ | '_ ` _ \\  / _ \\ | __| / _ \\   / _` || ___ \\ / _` || | | | \r\n" + //
+                        "\\  /\\  /|  __/| || (__ | (_) || | | | | ||  __/ | |_ | (_) | | (_| || |_/ /| (_| || |_| | \r\n" + //
+                        " \\/  \\/  \\___||_| \\___| \\___/ |_| |_| |_| \\___|  \\__| \\___/   \\__, |\\____/  \\__,_| \\__, | \r\n" + //
+                        "                                                                 | |                __/ | \r\n" + //
+                        "                                                                 |_|               |___/  \r\n" + //
+                        "");
+
+        //establishing variables outside do
+        String userName = "";
+        String passWord = "";
+        //cred mistake counter
+        int mistake = 1;
+
+        System.out.println("Please enter Your QU Username below");
+        userName = scan.nextLine(); //userName variable for login
+
+        System.out.println("Please enter Your QU Password below");
+        passWord = scan.nextLine(); //password variable for password
+
+        while (mistake < 3) {
+            int userNameIndex = credUserName.indexOf(userName);
+            if (userNameIndex != -1 && credPassWord.get(userNameIndex).equals(passWord)) {
+                System.out.println("Welcome user " + userName + "!");
+                mistake = 4;
+            } else {
+                System.out.println("Incorrect Username or Password. You have have " + (3 - mistake) + " mistakes left");
+                System.out.println("Please enter Your QU Username below");
+                userName = scan.nextLine(); //userName variable for login
+
+                System.out.println("Please enter Your QU Password below");
+                passWord = scan.nextLine(); //password variable for password
+
+                mistake++;
+            }
+
+        }
+        
+        if (mistake == 3) {
+            System.out.println("You have made 3 mistakes and have been locked out due to suspicious activity.\nGoodbye");
+            System.exit(0);
+        }
+        //if mistake == 3 quit application
+                                  
     }
     
 }
+
+/*This POC app should first welcome the user with a fun welcome message with associated ASCII art
+(websites like the one here can help you with this), and then ask a student user to login using their
+Quinnipiac email and password. You do not need to setup a real-world login system – just have a couple
+of accounts hardcoded that can be used. If the student fails to login three times due to incorrect
+username/password, tell the user that they are locked out of their account due to suspicious activity and
+force exit the application.*/
