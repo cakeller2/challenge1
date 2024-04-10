@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    ArrayList<Item> shopList = new ArrayList<Item>(); //for Buy and Sell methods
+    ArrayList<Item> shopList = new ArrayList<Item>(); //for Buy methods
+    ArrayList<Item> sellList = new ArrayList<Item>(); //for Sell methods
     ArrayList<Item> cart = new ArrayList<Item>();// for viewCart method
 
     Scanner scan = new Scanner(System.in);
@@ -41,7 +42,70 @@ public class Main {
     }
 
     public void sell(){
+        System.out.println("Please select which menu you would like to view \n1. Items listed for sale\n2. Add new item to Sell\n3. Go back to Home");
+        int selection = scan.nextInt();
+        switch (selection) {
+            case 1:
+                viewSellList();
+                break;
+            case 2:
+                addSell();
+                break;
+            case 3:
+                home();
+                break;
+            default:
+                System.out.println("Invalid Input, try again");
+                sell();
+        }
 
+    }
+
+    public void viewSellList() {
+        System.out.println("Displayed below is a list of items you are selling: ");
+        if (sellList.isEmpty()){
+            System.out.println("You currently do not have any items for sale. Please go to add new item to sell to your page");
+            sell();
+        } else {
+
+        }
+    }
+
+
+    /*When the sell option is chosen, the user is presented with two more menu options to either see their
+current items up for sale or add a new item for sale.
+If the user selects to see their current items up for sale, all of their current item names should be listed
+alongside the category and price in a nicely presented manner.
+If the user selects add new item, they should be prompted to enter in a name for the item, a category
+for the item, and a price for the item. The item should then be added to the system and show up when
+the user goes to the previously mentioned option for seeing their current items up for sale.
+An option to go back to the main menu must be available to the user as well*/
+
+    public void addSell() {
+        System.out.println("Would you like to list an item to sell? Please type yes or no");
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("yes")) {
+            System.out.println("Please enter item name");
+            String itemName = scan.nextLine();
+
+            System.out.println("Please enter the category for " + itemName);
+            String category = scan.nextLine();
+
+            System.out.println("Please enter listing price for " + itemName);
+            double price = scan.nextDouble();
+
+            sellList.add(new Item(itemName, category, null, null, price));
+
+            System.out.println(itemName + " has been added to sell list successfully\nReturning you to the previous menu");
+            sell();
+
+        } else if (answer.equalsIgnoreCase("no")){
+            System.out.println("Understood, now sending you to the previous menu");
+            sell();
+        } else {
+            System.out.println("Invalid input, try again");
+            addSell();
+        }
     }
 
     public void viewCart(){
