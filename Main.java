@@ -95,9 +95,16 @@ public class Main {
                 addSell();
             } else {
                 price = scan.nextDouble();
+                scan.nextLine();
             }
 
-            sellList.add(new Item(itemName, category, null, null, price));
+            System.out.println("Please enter your first and last name");
+            String name = scan.nextLine();
+
+            System.out.println("Please enter your QU email");
+            String email = scan.nextLine();
+
+            sellList.add(new Item(itemName, category, name, email, price));
 
             System.out.println(itemName + " has been added to sell list successfully\nReturning you to the previous menu");
             sell();
@@ -160,10 +167,6 @@ public class Main {
         credPassWord.add("testing1");
         credPassWord.add("testing2");
         credPassWord.add("testing3");
-
-        //String[] credUserName = {"student1", "student2", "student3"};
-        //String[] credPassWord = {"testing1", "testing2", "testing3"};
-        //List<String> credPassWord = Arrays.asList("testing1", "testing2", "testing3");
 
         Scanner scan = new Scanner(System.in); //same name as other scanner, just so it can be accessed here
         System.out.println("\r\n" + //
