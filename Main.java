@@ -1,11 +1,10 @@
 package challenge1;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    ArrayList<Item> shopList = new ArrayList<Item>(); //for Buy and Sell methods
+    ArrayList<Item> shopList = new ArrayList<Item>(); //for Buy methods
+    ArrayList<Item> sellList = new ArrayList<Item>(); //for Sell methods
     ArrayList<Item> cart = new ArrayList<Item>();// for viewCart method
 
     Scanner scan = new Scanner(System.in);
@@ -43,7 +42,73 @@ public class Main {
     }
 
     public void sell(){
+        System.out.println("Please select which menu you would like to view \n1. Items listed for sale\n2. Add new item to Sell\n3. Go back to Home");
+        int selection = scan.nextInt();
+        scan.nextLine();
+        switch (selection) {
+            case 1:
+                viewSellList();
+                break;
+            case 2:
+                addSell();
+                break;
+            case 3:
+                home();
+                break;
+            default:
+                System.out.println("Invalid Input, try again");
+                sell();
+        }
 
+    }
+
+    public void viewSellList() {
+        System.out.println("Displayed below is a list of items you are selling: ");
+        if (sellList.isEmpty()){
+            System.out.println("You currently do not have any items for sale. Please go to add new item to sell to your page");
+            sell();
+        } else {
+            for (int i = 0; i < sellList.size(); i++) {
+                System.out.println((i + 1) + ". Name: " + sellList.get(i).getItemName() + ", Category: " + sellList.get(i).getCategory() + ", Listed Price: $" + String.format("%.2f", sellList.get(i).getPrice() ));
+            }
+
+            System.out.println("Returning you to previous menu");
+            sell();
+        }
+    }
+
+    public void addSell() {
+        System.out.println("Would you like to list an item to sell? Please type yes or no");
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("yes")) {
+            System.out.println("Please enter item name");
+            String itemName = scan.nextLine();
+
+            System.out.println("Please enter the category for " + itemName);
+            String category = scan.nextLine();
+
+            System.out.println("Please enter listing price for " + itemName);
+            double price = 0;
+            if (!scan.hasNextDouble()){ //so the program doesn't crash if a double isn't inputted
+                scan.nextLine();
+                System.out.println("Invalid Input, entry must be restarted");
+                addSell();
+            } else {
+                price = scan.nextDouble();
+            }
+
+            sellList.add(new Item(itemName, category, null, null, price));
+
+            System.out.println(itemName + " has been added to sell list successfully\nReturning you to the previous menu");
+            sell();
+
+        } else if (answer.equalsIgnoreCase("no")){
+            System.out.println("Understood, now sending you to the previous menu");
+            sell();
+        } else {
+            System.out.println("Invalid input, try again");
+            addSell();
+        }
     }
 
     public void viewCart(){
@@ -146,7 +211,10 @@ public class Main {
             System.out.println("You have made 3 mistakes and have been locked out due to suspicious activity.\nGoodbye");
             System.exit(0);
         }
-        //if mistake == 3 quit application
+
+        //so it can access home
+        Main homeMethod = new Main();
+        homeMethod.home();
                                   
     }
     
