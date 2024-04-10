@@ -1,7 +1,5 @@
 package challenge1;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -146,7 +144,10 @@ public class Main {
             System.out.println("You have made 3 mistakes and have been locked out due to suspicious activity.\nGoodbye");
             System.exit(0);
         }
-        //if mistake == 3 quit application
+
+        //so it can access home
+        Main homeMethod = new Main();
+        homeMethod.home();
                                   
     }
     
