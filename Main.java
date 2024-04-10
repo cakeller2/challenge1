@@ -39,6 +39,64 @@ public class Main {
 
     public void buy(){
 
+        System.out.println("Please select which menu you would like to view \n1. Items listed for sale\n2. Add item to Cart\n3. Go back to Home");
+        int selection = scan.nextInt();
+        scan.nextLine();
+        switch (selection) {
+            case 1:
+                viewBuyList();
+                break;
+            case 2:
+                addItemToCart();
+                break;
+            case 3:
+                home();
+                break;
+            default:
+                System.out.println("Invalid Input, try again");
+                sell();
+        }
+    }
+
+    public void viewBuyList(){
+        System.out.println("Displayed below is the list of items ups for sale: ");
+        if (shopList.isEmpty()){
+            System.out.println("There are currently no items up for sale. Please wait for a new sale.");
+            sell();
+        } else {
+            for (int i = 0; i < shopList.size(); i++) {
+                System.out.println((i + 1) + ". Name: " + shopList.get(i).getItemName() + ", Category: " + shopList.get(i).getCategory() + ", Listed Price: $" + String.format("%.2f", shopList.get(i).getPrice() ));
+            }
+
+            System.out.println("Returning you to previous menu");
+            sell();
+        }
+    }
+
+    public void addItemToCart(){
+        int buyIndex;
+        System.out.println("Would you like to buy an item? Please type yes or no");
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("yes")) {
+            System.out.println("Which item would you like to buy?");
+            buyIndex = scan.nextInt();
+            if(buyIndex >= shopList.size() || buyIndex < 0){
+                System.out.println("Which item would you like to buy?");
+                buyIndex = scan.nextInt();
+            }
+            else if(-1 < buyIndex && buyIndex < shopList.size()){
+                cart.add(shopList.remove(buyIndex));
+            }
+            
+        } 
+        else if (answer.equalsIgnoreCase("no")){
+            System.out.println("Understood, now sending you to the previous menu");
+            buy();
+        } else {
+            System.out.println("Invalid input, try again");
+            addItemToCart();
+        }
+
     }
 
     public void sell(){
