@@ -22,13 +22,15 @@ In this menu, the user will be prompted to pick between viewing items for sale, 
 
 If viewing items for sale is selected and the list of items for sale is empty, then the system will inform the user and go back to the previous menu. If the list of items is not empty, the list will be displayed and then the user will be moved back to the previous menu
 
-If adding an item to cart is selected, there is a check for whether the user entered this menu by accident.The system then waits for a valid input. After that, the user enters the number for the item they want to add to their cart.
+If adding an item to cart is selected, there is a check for whether the user entered this menu by accident. The system then waits for a valid input. After that, the user enters the number for the item they want to add to their cart.
 
 # Sell
 
 In this menu, the user is prompted to pick between viewing the items that they have listed, add an item to be sold, or to return home. If an invalid answer is entered, but system will reject it and ask the user again
 
-If the user has no items listed for sale, then the system will inform the user and return to the previous menu. If the list of items is not empty, the list will be displayed and then teh user will be moved back to the previous menu.
+If the user has no items listed for sale, then the system will inform the user and return to the previous menu. If the list of items is not empty, the list will be displayed and then the user will be moved back to the previous menu.
+
+If adding an item to be sold is selected, there is a check for whether the user entered this menu by accident. The system then waits for a valid input. After that, the user has to enter the information for the item they are listing. This includes 
 
 
 
